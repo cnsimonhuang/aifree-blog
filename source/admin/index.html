@@ -5,8 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>内容管理 · 爱自由AI</title>
-  <script src="./decap-cms.js"></script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: #0a0e14; color: #c9d4e3;
+      font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #boot { text-align: center; padding: 24px; }
+    #boot .t { font-size: 18px; margin-bottom: 8px; letter-spacing: 2px; }
+    #boot .s { font-size: 13px; color: #7d8ca3; }
+  </style>
 </head>
 <body>
+  <div id="boot">
+    <div class="t">爱自由AI · 内容管理</div>
+    <div class="s">正在加载编辑器…</div>
+  </div>
+  <script>
+  // Decap 登录界面出现后，去掉"正在加载"提示
+  (function () {
+    var tries = 0;
+    var iv = setInterval(function () {
+      tries++;
+      if (document.body && /Login with GitHub/.test(document.body.textContent)) {
+        var b = document.getElementById('boot');
+        if (b) b.remove();
+        clearInterval(iv);
+      } else if (tries > 120) { clearInterval(iv); }
+    }, 500);
+  })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.0/dist/decap-cms.js"></script>
 </body>
 </html>
