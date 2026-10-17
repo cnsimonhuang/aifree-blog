@@ -264,7 +264,7 @@ footer:
   copyright:
     enable: true
     version: true
-  custom_text:
+  custom_text: '<div class="footer-admin-links"><a href="/admin/" target="_blank" rel="noopener">内容管理</a><span class="sep">·</span><a href="https://waline-sepia-rho.vercel.app/ui" target="_blank" rel="noopener">评论管理</a><span class="sep">·</span><a href="/comments/">留言存档</a></div>'
 
 # --------------------------------------
 # Aside Settings

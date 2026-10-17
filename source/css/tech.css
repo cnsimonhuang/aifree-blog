@@ -66,3 +66,40 @@ button, .button {
 [data-theme="light"] #page-header::before {
   background-color: transparent !important;
 }
+
+/* 页脚管理入口 */
+.footer-admin-links {
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.footer-admin-links a {
+  color: #7d8ca3;
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-admin-links a:hover { color: #00BFFF; }
+.footer-admin-links .sep { margin: 0 10px; color: #3a4556; }
+
+/* 留言存档页 */
+#waline-archive { max-width: 780px; margin: 0 auto; }
+.archive-loading, .archive-empty {
+  text-align: center; color: #7d8ca3; padding: 40px 0;
+}
+.archive-item {
+  background: rgba(0, 191, 255, .04);
+  border: 1px solid rgba(0, 191, 255, .12);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+.archive-item header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 8px;
+}
+.archive-nick { color: #00BFFF; font-weight: 600; }
+.archive-time { color: #7d8ca3; font-size: 12px; }
+.archive-body { color: #c9d4e3; line-height: 1.7; word-break: break-word; }
+.archive-body p { margin: 0 0 8px; }
+.archive-link { font-size: 13px; color: #7d8ca3; text-decoration: none; }
+.archive-link:hover { color: #00BFFF; }
