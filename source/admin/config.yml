@@ -1,0 +1,31 @@
+# Decap CMS 配置 · 爱自由AI
+# 后台地址：https://aifree-blog.pages.dev/admin
+# 登录走 GitHub OAuth（同域 /auth + /callback 中转，无需第三方服务）
+
+backend:
+  name: github
+  repo: cnsimonhuang/aifree-blog
+  branch: main
+  base_url: https://aifree-blog.pages.dev
+  auth_endpoint: auth
+
+site_url: https://aifree-blog.pages.dev
+display_url: https://aifree-blog.pages.dev
+
+# 上传的图片存到仓库，发布时同步到网站
+media_folder: source/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: "posts"
+    label: "文章"
+    folder: "source/_posts"
+    create: true
+    slug: "{{year}}{{month}}{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm", date_format: "YYYY-MM-DD", time_format: "HH:mm" }
+      - { label: "标签", name: "tags", widget: "list", required: false, allow_add: true }
+      - { label: "正文", name: "body", widget: "markdown" }

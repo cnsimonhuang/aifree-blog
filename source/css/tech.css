@@ -1,0 +1,68 @@
+/* ===== 爱自由AI · 深色科技风覆盖 ===== */
+
+/* 卡片更锐利：去掉过度圆角 */
+#recent-posts .recent-post-item,
+.card-widget,
+#post,
+#page,
+#archive,
+#tag,
+#category {
+  border-radius: 10px !important;
+}
+
+/* 深色模式：带蓝调的深背景，更有科技感 */
+[data-theme="dark"] {
+  --global-bg: #0a0e14;
+}
+
+/* 顶部导航：深色半透明 */
+[data-theme="dark"] #nav {
+  background: rgba(10, 14, 20, 0.88) !important;
+  box-shadow: 0 2px 12px rgba(0, 191, 255, 0.08);
+}
+
+/* 页脚跟随深色 */
+[data-theme="dark"] #footer {
+  background: #0a0e14;
+}
+
+/* 首页顶部大标题区：深蓝渐变科技感 */
+#page-header {
+  background: linear-gradient(135deg, #0a0e14 0%, #0d1b2e 55%, #102a43 100%) !important;
+}
+#page-header::before {
+  background-color: transparent !important;
+}
+
+/* 站点标题加一点字间距，更利落 */
+#site-title {
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+
+/* 文章卡片标题 hover 用科技蓝 */
+#recent-posts .recent-post-item .recent-post-info .article-title:hover,
+.card-widget .item-link:hover {
+  color: #00bfff !important;
+}
+
+/* 按钮更方正 */
+button, .button {
+  border-radius: 6px !important;
+}
+
+/* 分页、标签等小元素微调 */
+#pagination .page-number.current,
+#pagination a:hover {
+  background: #00bfff !important;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.45) !important;
+}
+
+/* 浅色模式下也保持克制（用户可手动切换） */
+[data-theme="light"] #page-header {
+  background: linear-gradient(135deg, #0b2545 0%, #13315c 60%, #134074 100%) !important;
+}
+[data-theme="light"] #page-header::before {
+  background-color: transparent !important;
+}
