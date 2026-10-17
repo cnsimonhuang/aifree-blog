@@ -37,5 +37,95 @@
   })();
   </script>
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.0/dist/decap-cms.js"></script>
+  <script>
+  // 注册 Stellar 主题的自定义编辑器组件：视频 / 音频 / 附件 / 外链卡片
+  (function () {
+    function esc(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function fileName(p) {
+      var parts = String(p || '').split('/');
+      return parts[parts.length - 1] || p;
+    }
+    function init() {
+      if (!window.CMS || !window.CMS.registerEditorComponent) {
+        setTimeout(init, 300);
+        return;
+      }
+
+      // 视频 -> {% video src %}
+      CMS.registerEditorComponent({
+        id: 'stellar-video',
+        label: '视频',
+        fields: [
+          { name: 'src', label: '视频文件（可上传或从媒体库选择）', widget: 'file', media_library: { allow_multiple: false } }
+        ],
+        pattern: /^{% video\s+(.*?)\s*%}$/,
+        fromBlock: function (match) { return { src: match[1] }; },
+        toBlock: function (obj) { return '{% video ' + obj.src + ' %}'; },
+        toPreview: function (obj) {
+          return '<video src="' + esc(obj.src) + '" controls style="max-width:100%;border-radius:8px;"></video>';
+        }
+      });
+
+      // 音频 -> {% audio src %}
+      CMS.registerEditorComponent({
+        id: 'stellar-audio',
+        label: '音频',
+        fields: [
+          { name: 'src', label: '音频文件（可上传或从媒体库选择）', widget: 'file', media_library: { allow_multiple: false } }
+        ],
+        pattern: /^{% audio\s+(.*?)\s*%}$/,
+        fromBlock: function (match) { return { src: match[1] }; },
+        toBlock: function (obj) { return '{% audio ' + obj.src + ' %}'; },
+        toPreview: function (obj) {
+          return '<audio src="' + esc(obj.src) + '" controls style="width:100%;"></audio>';
+        }
+      });
+
+      // 附件 -> [名称](上传文件路径)，仅识别本站上传目录的文件
+      CMS.registerEditorComponent({
+        id: 'stellar-attachment',
+        label: '附件',
+        fields: [
+          { name: 'file', label: '附件文件（可上传或从媒体库选择）', widget: 'file', media_library: { allow_multiple: false } },
+          { name: 'title', label: '显示名称（留空则用文件名）', widget: 'string', required: false }
+        ],
+        pattern: /^\[(.*?)\]\((\/images\/uploads\/.*?)\)$/,
+        fromBlock: function (match) { return { title: match[1], file: match[2] }; },
+        toBlock: function (obj) {
+          var t = obj.title || fileName(obj.file);
+          return '[' + t + '](' + obj.file + ')';
+        },
+        toPreview: function (obj) {
+          var t = esc(obj.title || fileName(obj.file));
+          return '<p>📎 <a href="' + esc(obj.file) + '">' + t + '</a></p>';
+        }
+      });
+
+      // 外链卡片 -> {% link url title %}
+      CMS.registerEditorComponent({
+        id: 'stellar-link',
+        label: '外链卡片',
+        fields: [
+          { name: 'url', label: '链接地址', widget: 'string' },
+          { name: 'title', label: '标题（留空则自动抓取）', widget: 'string', required: false }
+        ],
+        pattern: /^{% link\s+(\S+)(?:\s+(.*?))?\s*%}$/,
+        fromBlock: function (match) { return { url: match[1], title: match[2] || '' }; },
+        toBlock: function (obj) {
+          return '{% link ' + obj.url + (obj.title ? ' ' + obj.title : '') + ' %}';
+        },
+        toPreview: function (obj) {
+          return '<p>🔗 <a href="' + esc(obj.url) + '" target="_blank" rel="noopener">' +
+            esc(obj.title || obj.url) + '</a></p>';
+        }
+      });
+    }
+    init();
+  })();
+  </script>
 </body>
 </html>

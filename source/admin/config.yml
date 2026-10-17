@@ -12,6 +12,9 @@ backend:
 site_url: https://aifree-blog.pages.dev
 display_url: https://aifree-blog.pages.dev
 
+# 后台界面语言：简体中文
+locale: zh_Hans
+
 # 上传的图片存到仓库，发布时同步到网站
 media_folder: source/images/uploads
 public_folder: /images/uploads
