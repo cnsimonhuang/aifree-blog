@@ -1,0 +1,36 @@
+# Stellar 主题配置（爱自由AI）
+
+appearance:
+  color_scheme: dark
+  colors:
+    primary: hsl(199 100% 50%)
+
+leftbar:
+  brand:
+    image:
+      src: /img/favicon.png
+      variant: avatar
+    name: 爱自由AI
+    tagline: AI × 不良资产的实操记录
+
+comments:
+  provider: waline
+  waline:
+    serverURL: https://waline-sepia-rho.vercel.app
+    commentCount: true
+    pageview: false
+
+footer:
+  sitemap:
+    - title: 管理
+      items:
+        - '[内容管理](/admin/)'
+        - '[评论管理](https://waline-sepia-rho.vercel.app/ui)'
+        - '[留言存档](/comments/)'
+    - title: 博客
+      items:
+        - '[近期发布](/)'
+        - '[归档](/archives/)'
+        - '[标签](/tags/)'
+  content: |
+    本站由 [Simon](/) 创建，评论由 Waline 驱动。
