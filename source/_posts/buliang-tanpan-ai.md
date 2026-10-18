@@ -1,7 +1,7 @@
 ---
 title: 不良资产探盘视频：AI内容获客的合规红线、硬件账与全流程SOP
 date: 2026-10-17 10:40:00
-cover: /images/buliang/img01.jpeg
+cover: /images/buliang/img05.png
 tags:
   - 不良资产
   - AI获客
