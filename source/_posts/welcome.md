@@ -1,6 +1,7 @@
 ---
 title: 欢迎来到爱自由AI
 date: 2026-10-17 16:00:00
+cover: /img/favicon.png
 tags:
   - 公告
 ---
