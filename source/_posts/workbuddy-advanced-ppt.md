@@ -1,6 +1,7 @@
 ---
 title: 如果用 WorkBuddy 制作高级感 PPT？
 date: 2026-11-18 17:45:00
+cover: /images/workbuddy/cover.jpg
 tags:
 - PPT
 - WorkBuddy
